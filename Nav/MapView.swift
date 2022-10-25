@@ -34,6 +34,7 @@ struct MapView: View {
                                 shadowRadius: 4,
                                 shadowY: 4
                             )
+                            .shadow(radius: 4, y: 4)
                     }
                     
                     Button(action: {}) {
@@ -47,6 +48,7 @@ struct MapView: View {
                                 shadowRadius: 4,
                                 shadowY: 4
                             )
+                            .shadow(radius: 4, y: 4)
                     }
                     
                     Spacer()
@@ -62,6 +64,7 @@ struct MapView: View {
                                 shadowRadius: 4,
                                 shadowY: 4
                             )
+                            .shadow(radius: 4, y: 4)
                     }
                 }
                 .padding(.trailing, 16)
