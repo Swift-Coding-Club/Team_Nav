@@ -28,28 +28,26 @@ struct MapView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundColor(.white)
+                            .frame(width: 50, height: 50)
                             .background(
                                 Circle()
                                     .fill(.red)
-                                    .frame(width: 50, height: 50)
                             )
+                            .shadow(radius: 4, y: 4)
                     }
-                    .frame(width: 50, height: 50)
-                    .shadow(radius: 4, y: 4)
                     
                     Button(action: {}) {
                         Image(systemName: "list.bullet")
                             .resizable()
                             .frame(width: 20, height: 14.5)
                             .foregroundColor(.white)
+                            .frame(width: 50, height: 50)
                             .background(
                                 Circle()
                                     .fill(.red)
-                                    .frame(width: 50, height: 50)
                             )
+                            .shadow(radius: 4, y: 4)
                     }
-                    .frame(width: 50, height: 50)
-                    .shadow(radius: 4, y: 4)
                     
                     Spacer()
                     
@@ -58,14 +56,13 @@ struct MapView: View {
                             .resizable()
                             .frame(width: 17, height: 16)
                             .foregroundColor(.white)
+                            .frame(width: 50, height: 50)
                             .background(
                                 Circle()
                                     .fill(.red)
-                                    .frame(width: 50, height: 50)
                             )
+                            .shadow(radius: 4, y: 4)
                     }
-                    .frame(width: 50, height: 50)
-                    .shadow(radius: 4, y: 4)
                 }
                 .padding(.trailing, 16)
             }
