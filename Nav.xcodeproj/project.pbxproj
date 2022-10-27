@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153B35BA2912BF4900389DF0 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B35B92912BF4900389DF0 /* Bundle+Ext.swift */; };
+		15B03F40290AE16600015109 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B03F3F290AE16600015109 /* ListView.swift */; };
+		15B03F45290FE46D00015109 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 15B03F43290E421500015109 /* MockData.json */; };
+		15B03F492911547200015109 /* MockDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B03F482911547200015109 /* MockDatum.swift */; };
 		26A1500B29083A1300BC7355 /* NavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1500A29083A1300BC7355 /* NavApp.swift */; };
-		26A1500D29083A1300BC7355 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1500C29083A1300BC7355 /* ContentView.swift */; };
+		26A1500D29083A1300BC7355 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1500C29083A1300BC7355 /* MainView.swift */; };
 		26A1500F29083A1400BC7355 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26A1500E29083A1400BC7355 /* Assets.xcassets */; };
 		26A1501229083A1400BC7355 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26A1501129083A1400BC7355 /* Preview Assets.xcassets */; };
 		26A1501929083B7B00BC7355 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1501829083B7B00BC7355 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153B35B92912BF4900389DF0 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		15B03F3F290AE16600015109 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		15B03F43290E421500015109 /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		15B03F482911547200015109 /* MockDatum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatum.swift; sourceTree = "<group>"; };
 		26A1500729083A1300BC7355 /* Nav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A1500A29083A1300BC7355 /* NavApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavApp.swift; sourceTree = "<group>"; };
-		26A1500C29083A1300BC7355 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		26A1500C29083A1300BC7355 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		26A1500E29083A1400BC7355 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26A1501129083A1400BC7355 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		26A1501829083B7B00BC7355 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -34,6 +42,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153B35B82912BF2500389DF0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				153B35B92912BF4900389DF0 /* Bundle+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		153B35BB2912BF8E00389DF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15B03F482911547200015109 /* MockDatum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15B03F3A290ADB6700015109 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15B03F3C290ADD0900015109 /* List */,
+				15B03F3B290ADB7300015109 /* Map */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15B03F3B290ADB7300015109 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				26A1501829083B7B00BC7355 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		15B03F3C290ADD0900015109 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				15B03F3F290AE16600015109 /* ListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		15B03F44290E423A00015109 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				15B03F43290E421500015109 /* MockData.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		26A14FFE29083A1300BC7355 = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +111,11 @@
 			isa = PBXGroup;
 			children = (
 				26A1500A29083A1300BC7355 /* NavApp.swift */,
-				26A1500C29083A1300BC7355 /* ContentView.swift */,
-				26A1501829083B7B00BC7355 /* MapView.swift */,
+				26A1500C29083A1300BC7355 /* MainView.swift */,
+				15B03F3A290ADB6700015109 /* View */,
+				153B35BB2912BF8E00389DF0 /* Model */,
+				153B35B82912BF2500389DF0 /* Extension */,
+				15B03F44290E423A00015109 /* Data */,
 				26A1500E29083A1400BC7355 /* Assets.xcassets */,
 				26A1501029083A1400BC7355 /* Preview Content */,
 			);
@@ -128,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B03F45290FE46D00015109 /* MockData.json in Resources */,
 				26A1501229083A1400BC7355 /* Preview Assets.xcassets in Resources */,
 				26A1500F29083A1400BC7355 /* Assets.xcassets in Resources */,
 			);
@@ -140,9 +201,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26A1500D29083A1300BC7355 /* ContentView.swift in Sources */,
+				15B03F40290AE16600015109 /* ListView.swift in Sources */,
+				153B35BA2912BF4900389DF0 /* Bundle+Ext.swift in Sources */,
+				26A1500D29083A1300BC7355 /* MainView.swift in Sources */,
 				26A1501929083B7B00BC7355 /* MapView.swift in Sources */,
 				26A1500B29083A1300BC7355 /* NavApp.swift in Sources */,
+				15B03F492911547200015109 /* MockDatum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
