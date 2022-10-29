@@ -135,6 +135,8 @@ struct PinCreationView: View {
                 }
             }
         }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .bottom)
+        .background(.red)
     }
 }
 
