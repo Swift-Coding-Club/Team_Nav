@@ -29,7 +29,7 @@ struct MapView: View {
                                 iconColor: .navWhite,
                                 iconWidth: 20,
                                 iconHeight: 20,
-                                buttonColor: .primary,
+                                buttonColor: .primaryRed,
                                 buttonSize: 50,
                                 shadowRadius: 4,
                                 shadowY: 4
@@ -43,7 +43,7 @@ struct MapView: View {
                                 iconColor: .navWhite,
                                 iconWidth: 20,
                                 iconHeight: 14.5,
-                                buttonColor: .primary,
+                                buttonColor: .primaryRed,
                                 buttonSize: 50,
                                 shadowRadius: 4,
                                 shadowY: 4
@@ -59,7 +59,7 @@ struct MapView: View {
                                 iconColor: .navWhite,
                                 iconWidth: 17,
                                 iconHeight: 16,
-                                buttonColor: .primary,
+                                buttonColor: .primaryRed,
                                 buttonSize: 50,
                                 shadowRadius: 4,
                                 shadowY: 4
