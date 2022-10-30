@@ -58,6 +58,7 @@ struct PinCreationView: View {
                     }
                     .padding(.leading, 16)
                 }
+                .padding([.leading, .trailing], 16)
                 
                 Group {
                     Text("사진")
@@ -66,6 +67,12 @@ struct PinCreationView: View {
                         .padding(.top, 20)
 
                     HStack {
+                        Text("테마")
+                            .subhead3()
+                            .foregroundColor(.navBlack)
+                        
+                        Spacer()
+                        
                         Button(action: {}) {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
@@ -135,8 +142,6 @@ struct PinCreationView: View {
                 }
             }
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .bottom)
-        .background(.red)
     }
 }
 
