@@ -25,43 +25,43 @@ struct MapView: View {
                 VStack {
                     Button(action: {}) {
                         Image(systemName: "gearshape")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.white)
-                            .frame(width: 50, height: 50)
-                            .background(
-                                Circle()
-                                    .fill(.red)
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 20,
+                                iconHeight: 20,
+                                buttonColor: .primary,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
                             )
-                            .shadow(radius: 4, y: 4)
                     }
                     
                     Button(action: {}) {
                         Image(systemName: "list.bullet")
-                            .resizable()
-                            .frame(width: 20, height: 14.5)
-                            .foregroundColor(.white)
-                            .frame(width: 50, height: 50)
-                            .background(
-                                Circle()
-                                    .fill(.red)
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 20,
+                                iconHeight: 14.5,
+                                buttonColor: .primary,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
                             )
-                            .shadow(radius: 4, y: 4)
                     }
                     
                     Spacer()
                     
                     Button(action: {}) {
                         Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 17, height: 16)
-                            .foregroundColor(.white)
-                            .frame(width: 50, height: 50)
-                            .background(
-                                Circle()
-                                    .fill(.red)
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 17,
+                                iconHeight: 16,
+                                buttonColor: .primary,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
                             )
-                            .shadow(radius: 4, y: 4)
                     }
                 }
                 .padding(.trailing, 16)
