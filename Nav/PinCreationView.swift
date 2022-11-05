@@ -58,34 +58,24 @@ struct PinCreationView: View {
                     }
                     .padding(.leading, 16)
                 }
-                .padding([.leading, .trailing], 16)
                 
                 Group {
                     Text("사진")
                         .subhead3()
                         .foregroundColor(.navBlack)
                         .padding(.top, 20)
-
-                    HStack {
-                        Text("테마")
-                            .subhead3()
-                            .foregroundColor(.navBlack)
-                        
-                        Spacer()
-                        
-                        Button(action: {}) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .tint(.primaryRed)
-                                .padding(40)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.navGray)
-                                )
-                        }
+                    
+                    Button(action: {}) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .tint(.primaryRed)
+                            .padding(40)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.navGray)
+                            )
                     }
-                    .padding(.bottom, 20)
                 }
                 
                 Group {
