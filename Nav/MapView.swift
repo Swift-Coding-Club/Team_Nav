@@ -15,8 +15,61 @@ struct MapView: View {
 
     
     var body: some View {
-        Map(coordinateRegion: $region)
-            .ignoresSafeArea()
+        ZStack {
+            Map(coordinateRegion: $region)
+                .ignoresSafeArea()
+            
+            HStack {
+                Spacer()
+                
+                VStack {
+                    Button(action: {}) {
+                        Image(systemName: "gearshape")
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 20,
+                                iconHeight: 20,
+                                buttonColor: .primaryRed,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
+                            )
+                            .shadow(radius: 4, y: 4)
+                    }
+                    
+                    Button(action: {}) {
+                        Image(systemName: "list.bullet")
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 20,
+                                iconHeight: 14.5,
+                                buttonColor: .primaryRed,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
+                            )
+                            .shadow(radius: 4, y: 4)
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {}) {
+                        Image(systemName: "plus")
+                            .circleButton(
+                                iconColor: .navWhite,
+                                iconWidth: 17,
+                                iconHeight: 16,
+                                buttonColor: .primaryRed,
+                                buttonSize: 50,
+                                shadowRadius: 4,
+                                shadowY: 4
+                            )
+                            .shadow(radius: 4, y: 4)
+                    }
+                }
+                .padding(.trailing, 16)
+            }
+        }
     }
 }
 
