@@ -9,6 +9,7 @@ import MapKit
 import SwiftUI
 
 struct MapView: View {
+    private var mockDatas: [MockDatum] = MockDatum.allData
     
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -16,8 +17,12 @@ struct MapView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $region)
-                .ignoresSafeArea()
+            Map(coordinateRegion: $region,
+                showsUserLocation: false,
+                annotationItems: mockDatas){
+                data in MapMarker(coordinate: data.coordinate)
+
+            }
             
             HStack {
                 Spacer()
