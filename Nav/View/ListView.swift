@@ -16,6 +16,14 @@ struct ListView: View {
                 ForEach(mockDatas, id: \.id) {
                     mockDatum in
                     Text("\(mockDatum.title.rawValue)")
+                        .padding()
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
+                        }
                 }
             }
         }
