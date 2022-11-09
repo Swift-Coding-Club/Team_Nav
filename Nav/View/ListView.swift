@@ -19,7 +19,7 @@ struct ListView: View {
                         .padding()
                         .swipeActions {
                             Button(role: .destructive) {
-                                
+                                // code
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
@@ -29,7 +29,6 @@ struct ListView: View {
         }
     }
 }
-
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
