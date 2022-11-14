@@ -27,6 +27,7 @@ struct ListView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
