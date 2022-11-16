@@ -21,6 +21,7 @@
 		FD338916291799D800C4AB98 /* MockDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD338915291799D800C4AB98 /* MockDatum.swift */; };
 		FD338918291799E100C4AB98 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD338917291799E100C4AB98 /* Bundle+Ext.swift */; };
 		FD33891A2917B81E00C4AB98 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3389192917B81E00C4AB98 /* ListView.swift */; };
+		FDFD7A5D292265DB001BE945 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFD7A5C292265DB001BE945 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		FD338915291799D800C4AB98 /* MockDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDatum.swift; path = ../../../../Team_Nav/Nav/Model/MockDatum.swift; sourceTree = "<group>"; };
 		FD338917291799E100C4AB98 /* Bundle+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bundle+Ext.swift"; path = "../../../../Team_Nav/Nav/Extension/Bundle+Ext.swift"; sourceTree = "<group>"; };
 		FD3389192917B81E00C4AB98 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		FDFD7A5C292265DB001BE945 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				262C17C5290E385E00450E54 /* Text+.swift */,
 				262C17BF290D06F700450E54 /* Color+.swift */,
 				26A1501029083A1400BC7355 /* Preview Content */,
+				FDFD7A5C292265DB001BE945 /* ImagePicker.swift */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				26A1501929083B7B00BC7355 /* MapView.swift in Sources */,
 				FD338918291799E100C4AB98 /* Bundle+Ext.swift in Sources */,
 				FD33891A2917B81E00C4AB98 /* ListView.swift in Sources */,
+				FDFD7A5D292265DB001BE945 /* ImagePicker.swift in Sources */,
 				26A1500B29083A1300BC7355 /* NavApp.swift in Sources */,
 				262C17BE290CDF6900450E54 /* PinCreationView.swift in Sources */,
 			);
