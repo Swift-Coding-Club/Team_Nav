@@ -59,7 +59,9 @@ struct MapView: View {
                         
                         Spacer()
                         
-                        Button(action: {}) {
+                        NavigationLink {
+                            PinCreationView()
+                        } label: {
                             Image(systemName: "plus")
                                 .circleButton(
                                     iconColor: .navWhite,
