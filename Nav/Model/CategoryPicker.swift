@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct CategoryPicker: View {
+    var arrCategory = ["음식", "장소", "이벤트"]
+    
+    @Binding var categoryDataBinding: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Picker("Choose a color", selection: $categoryDataBinding) {
+                ForEach(arrCategory, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.wheel)
+            .cornerRadius(10)
+        }
     }
 }
 
-struct CategoryPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryPicker()
-    }
-}
+

@@ -14,12 +14,12 @@ struct PinCreationView: View {
     @State private var locationAddress: String = ""
     @State private var locationDescription: String = ""
     @State private var rating: [Bool] = [true, true, true, false, false]
+    @State var btnCategory:Bool = false
     
     @StateObject var imagePicker = ImagePicker()
     
     let rouws = [GridItem()]
     let maxPhotosCount:Int = 5
-    
     
     var body: some View {
         NavigationView {
@@ -31,12 +31,17 @@ struct PinCreationView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button {
+                        btnCategory.toggle()
+                    } label: {
                         Text(locationCategory)
                             .body2()
                             .foregroundColor(.navBlack)
                             .padding(8)
                             .background(RoundedRectangle(cornerRadius: 16).fill(Color.navGray))
+                    }.sheet(isPresented: $btnCategory) {
+                        CategoryPicker(categoryDataBinding: $locationCategory )
+                            .presentationDetents([.height(200)])
                     }
                 }
                 
@@ -76,7 +81,7 @@ struct PinCreationView: View {
                                 imagePicker.images[index]
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 100)
+                                    .frame(width: 100, height: 100)
                             }
                             Button(action: {
                                 print(imagePicker.images.count)
