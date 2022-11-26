@@ -73,10 +73,23 @@ struct PinCreationView: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         LazyHGrid(rows: rouws) {
                             ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                                imagePicker.images[index]
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 100)
+                                Button {
+                                    imagePicker.images.remove(at: index)
+                                } label: {
+                                    ZStack {
+                                        imagePicker.images[index]
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100, height: 100)
+                                        
+                                        Image(systemName: "minus.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .tint(.lightGray)
+                                    }
+                                    
+                                    
+                                }
                             }
                             Button(action: {
                                 print(imagePicker.images.count)

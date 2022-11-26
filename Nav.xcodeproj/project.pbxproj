@@ -85,7 +85,6 @@
 				262C17C5290E385E00450E54 /* Text+.swift */,
 				262C17BF290D06F700450E54 /* Color+.swift */,
 				26A1501029083A1400BC7355 /* Preview Content */,
-				FDFD7A5C292265DB001BE945 /* ImagePicker.swift */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -111,6 +110,7 @@
 		FD3389102917992800C4AB98 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FDFD7A5C292265DB001BE945 /* ImagePicker.swift */,
 				FDFD7A6229289933001BE945 /* MockDatum.swift */,
 			);
 			path = Model;

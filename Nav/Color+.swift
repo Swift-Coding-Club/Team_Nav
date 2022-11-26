@@ -14,4 +14,5 @@ extension Color {
     static let navBlack = Color("NavBlack")
     static let navGray = Color("NavGray")
     static let navWhite = Color("NavWhite")
+    static let lightGray = Color("LightGray")
 }
