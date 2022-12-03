@@ -79,16 +79,15 @@ struct PinCreationView: View {
                                     ZStack {
                                         imagePicker.images[index]
                                             .resizable()
-                                            .scaledToFit()
                                             .frame(width: 100, height: 100)
-                                        
+                                            .scaledToFill()
                                         Image(systemName: "minus.circle.fill")
                                             .resizable()
-                                            .frame(width: 30, height: 30)
-                                            .tint(.lightGray)
+                                            .frame(width: 15, height: 15)
+                                            .tint(.red)
+                                            .padding(EdgeInsets(top: 3, leading: 70, bottom: 40, trailing: 0))
+                                        Spacer()
                                     }
-                                    
-                                    
                                 }
                             }
                             Button(action: {
