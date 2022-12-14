@@ -14,10 +14,12 @@ struct PinCreationView: View {
     @State private var locationAddress: String = ""
     @State private var locationDescription: String = ""
     @State private var rating: [Bool] = [true, true, true, false, false]
+    @State var btnCategory:Bool = false
     
     @StateObject var imagePicker = ImagePicker()
-    let columns = [GridItem(.adaptive(minimum: 100))]
     
+    let rouws = [GridItem()]
+    let maxPhotosCount:Int = 5
     
     var body: some View {
         NavigationView {
@@ -29,12 +31,17 @@ struct PinCreationView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button {
+                        btnCategory.toggle()
+                    } label: {
                         Text(locationCategory)
                             .body2()
                             .foregroundColor(.navBlack)
                             .padding(8)
                             .background(RoundedRectangle(cornerRadius: 16).fill(Color.navGray))
+                    }.sheet(isPresented: $btnCategory) {
+                        CategoryPicker(categoryDataBinding: $locationCategory )
+                            .presentationDetents([.height(200)])
                     }
                 }
                 
@@ -68,85 +75,85 @@ struct PinCreationView: View {
                         .subhead3()
                         .foregroundColor(.navBlack)
                         .padding(.top, 20)
-                    HStack {
-                            ScrollView(.horizontal, showsIndicators: false){
-                                LazyVGrid(columns: columns) {
-                                    ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                                        imagePicker.images[index]
-                                            .resizable()
-                                            .scaledToFit()
-                                    }
-                                    
-                                    Button(action: {
-                                        print(imagePicker.images.count)
-                                    }) {
-                                        PhotosPicker(selection: $imagePicker.imageSelections,
-                                                     maxSelectionCount: 10,
-                                                     matching: .images,
-                                                     photoLibrary: .shared()) {
-                                            Image(systemName: "plus.circle.fill")
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .tint(.primaryRed)
-                                        }
-                                    }
+                    ScrollView(.horizontal, showsIndicators: false){
+                        LazyHGrid(rows: rouws) {
+                            ForEach(0..<imagePicker.images.count, id: \.self) { index in
+                                imagePicker.images[index]
+                                    .resizable()
+                                    .scaledToFit()
                                     .frame(width: 100, height: 100)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color.navGray)
-                                    )
+                            }
+                            Button(action: {
+                                print(imagePicker.images.count)
+                            }) {
+                                PhotosPicker(selection: $imagePicker.imageSelections,
+                                             maxSelectionCount:
+                                                maxPhotosCount - imagePicker.images.count,
+                                             matching: .images,
+                                             photoLibrary: .shared()) {
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .tint(.primaryRed)
                                 }
                             }
-                            .onAppear {
-                                        UIScrollView.appearance().bounces = false
-                                    }
-                                    .onDisappear {
-                                        UIScrollView.appearance().bounces = true
-                                    }
+                            .disabled(imagePicker.images.count == 5)
+                            .frame(width: 100, height: 100)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.navGray)
+                            )
+                        }
+                    }
+                    .onAppear {
+                        UIScrollView.appearance().bounces = false
+                    }
+                    .onDisappear {
+                        UIScrollView.appearance().bounces = true
                     }
                 }
-            }
-            
-            Group {
-                Text("설명")
-                    .subhead3()
-                    .foregroundColor(.navBlack)
                 
-                TextEditor(text: $locationDescription)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.navBlack, lineWidth: 1)
-                    )
-            }
-            
-            Group {
-                Text("평점")
-                    .subhead3()
-                    .foregroundColor(.navBlack)
-                    .padding(.top, 20)
                 
-                // TODO: - 하단의 Spacer를 별점으로 변경
-                
-                HStack {
-                    ForEach(rating, id: \.self) {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 65, height: 65)
-                            .foregroundColor($0 ? .yellow : .navGray)
-                    }
+                Group {
+                    Text("설명")
+                        .subhead3()
+                        .foregroundColor(.navBlack)
+                    
+                    TextEditor(text: $locationDescription)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.navBlack, lineWidth: 1)
+                        )
                 }
-                .padding(.bottom, 20)
-            }
-            
-            Button(action: {}) {
-                Text("확인")
-                    .headline()
-                    .foregroundColor(.navWhite)
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.primaryRed)
-                    )
+                
+                Group {
+                    Text("평점")
+                        .subhead3()
+                        .foregroundColor(.navBlack)
+                        .padding(.top, 20)
+                    
+                    // TODO: - 하단의 Spacer를 별점으로 변경
+                    
+                    HStack {
+                        ForEach(rating, id: \.self) {
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .frame(width: 65, height: 65)
+                                .foregroundColor($0 ? .yellow : .navGray)
+                        }
+                    }
+                    .padding(.bottom, 20)
+                }
+                Button(action: {}) {
+                    Text("확인")
+                        .headline()
+                        .foregroundColor(.navWhite)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.primaryRed)
+                        )
+                }
             }
         }
         .padding(16)
