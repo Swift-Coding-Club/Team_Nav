@@ -94,7 +94,24 @@ struct MapView: View {
                         }
                     )
                     .fullScreenCover(isPresented: $isShowModal) {
-                        PinCreationView()
+                        NavigationView {
+                            VStack {
+                                PinCreationView()
+                            }
+                            .padding(16)
+                            .navigationTitle("핀 추가")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button {
+                                        isShowModal = false
+                                    } label: {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
