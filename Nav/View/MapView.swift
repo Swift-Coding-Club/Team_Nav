@@ -4,21 +4,19 @@
 //
 //  Created by 김민택 on 2022/10/26.
 //
-
 import MapKit
 import SwiftUI
-
 struct MapView: View {
     private var mockDatas: [MockDatum] = MockDatum.allData
     
     @State var searchQueryString = ""
-    
+
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State private var isLoggedIn: Bool = true
     @State private var isClickedYes: Bool = false
     @State private var isShowModal: Bool = false
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,10 +25,10 @@ struct MapView: View {
                     annotationItems: mockDatas){
                     data in MapMarker(coordinate: data.coordinate)
                 }
-                
+
                 HStack {
                     Spacer()
-                    
+
                     VStack {
                         Button(action: {}) {
                             Image(systemName: "gearshape")
@@ -45,7 +43,7 @@ struct MapView: View {
                                 )
                                 .shadow(radius: 4, y: 4)
                         }
-                        
+
                         NavigationLink {
                             ListView()
                         } label: {
@@ -61,9 +59,9 @@ struct MapView: View {
                                 )
                                 .shadow(radius: 4, y: 4)
                         }
-                        
+
                         Spacer()
-                        
+
                         Button {
                             if isLoggedIn {
                                 isShowModal = true
@@ -127,7 +125,6 @@ struct MapView: View {
     }
     
 }
-
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
