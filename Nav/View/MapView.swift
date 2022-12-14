@@ -17,6 +17,7 @@ struct MapView: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State private var isLoggedIn: Bool = false
     @State private var isClickedYes: Bool = false
+    @State private var isShowModal: Bool = false
     
     var body: some View {
         NavigationView {
@@ -63,38 +64,24 @@ struct MapView: View {
                         
                         Spacer()
                         
-                        if isLoggedIn {
-                            NavigationLink {
-                                PinCreationView()
-                            } label: {
-                                Image(systemName: "plus")
-                                    .circleButton(
-                                        iconColor: .navWhite,
-                                        iconWidth: 17,
-                                        iconHeight: 16,
-                                        buttonColor: .primaryRed,
-                                        buttonSize: 50,
-                                        shadowRadius: 4,
-                                        shadowY: 4
-                                    )
-                                    .shadow(radius: 4, y: 4)
-                            }
-                        } else {
-                            Button {
+                        Button {
+                            if isLoggedIn {
+                                isShowModal = true
+                            } else {
                                 isClickedYes = true
-                            } label: {
-                                Image(systemName: "plus")
-                                    .circleButton(
-                                        iconColor: .navWhite,
-                                        iconWidth: 17,
-                                        iconHeight: 16,
-                                        buttonColor: .primaryRed,
-                                        buttonSize: 50,
-                                        shadowRadius: 4,
-                                        shadowY: 4
-                                    )
-                                    .shadow(radius: 4, y: 4)
                             }
+                        } label: {
+                            Image(systemName: "plus")
+                                .circleButton(
+                                    iconColor: .navWhite,
+                                    iconWidth: 17,
+                                    iconHeight: 16,
+                                    buttonColor: .primaryRed,
+                                    buttonSize: 50,
+                                    shadowRadius: 4,
+                                    shadowY: 4
+                                )
+                                .shadow(radius: 4, y: 4)
                         }
                     }
                     .padding(.trailing, 16)
@@ -108,6 +95,9 @@ struct MapView: View {
                             Text("로그인을 하시면 모든 서비스를 이용하실 수 있습니다. 로그인 하시겠습니까?")
                         }
                     )
+                    .fullScreenCover(isPresented: $isShowModal) {
+                        PinCreationView()
+                    }
                 }
             }
             .navigationTitle("NAV")
