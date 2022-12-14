@@ -13,6 +13,7 @@ struct MapView: View {
     
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    @State private var isLoggedIn: Bool = false
     
     var body: some View {
         NavigationView {
@@ -59,20 +60,38 @@ struct MapView: View {
                         
                         Spacer()
                         
-                        NavigationLink {
-                            PinCreationView()
-                        } label: {
-                            Image(systemName: "plus")
-                                .circleButton(
-                                    iconColor: .navWhite,
-                                    iconWidth: 17,
-                                    iconHeight: 16,
-                                    buttonColor: .primaryRed,
-                                    buttonSize: 50,
-                                    shadowRadius: 4,
-                                    shadowY: 4
-                                )
-                                .shadow(radius: 4, y: 4)
+                        if isLoggedIn {
+                            NavigationLink {
+                                PinCreationView()
+                            } label: {
+                                Image(systemName: "plus")
+                                    .circleButton(
+                                        iconColor: .navWhite,
+                                        iconWidth: 17,
+                                        iconHeight: 16,
+                                        buttonColor: .primaryRed,
+                                        buttonSize: 50,
+                                        shadowRadius: 4,
+                                        shadowY: 4
+                                    )
+                                    .shadow(radius: 4, y: 4)
+                            }
+                        } else {
+                            Button {
+                                isClickedYes = true
+                            } label: {
+                                Image(systemName: "plus")
+                                    .circleButton(
+                                        iconColor: .navWhite,
+                                        iconWidth: 17,
+                                        iconHeight: 16,
+                                        buttonColor: .primaryRed,
+                                        buttonSize: 50,
+                                        shadowRadius: 4,
+                                        shadowY: 4
+                                    )
+                                    .shadow(radius: 4, y: 4)
+                            }
                         }
                     }
                     .padding(.trailing, 16)
