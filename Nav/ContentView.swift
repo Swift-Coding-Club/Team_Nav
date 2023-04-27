@@ -9,7 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        MapView()
+        TabView {
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                }
+            
+            ListView()
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                }
+            
+            PinCreationView()
+                .tabItem {
+                    Image(systemName: "plus")
+                }
+        }
     }
 }
 
