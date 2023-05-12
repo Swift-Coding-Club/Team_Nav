@@ -11,7 +11,7 @@ struct MockDatum: Codable, Identifiable {
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
-    
+
     static let allData: [MockDatum] = Bundle.main.decode(file: "MockData.json") // 프로그램 전체에서 사용 할 수 있도록 함.
     static let sampleData: MockDatum = allData[0] // 빠른 UI 예제를 위해 1번째 데이터를 사용하도록 만듦.
 }
