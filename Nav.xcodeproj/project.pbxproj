@@ -75,7 +75,7 @@
 			children = (
 				26A1500A29083A1300BC7355 /* NavApp.swift */,
 				26A1500C29083A1300BC7355 /* ContentView.swift */,
-				FD3389122917993F00C4AB98 /* Data */,
+				26FE54E62949B90100B4E0E9 /* Data */,
 				FD3389112917993300C4AB98 /* Extension */,
 				FD3389102917992800C4AB98 /* Model */,
 				FD33890F2917991700C4AB98 /* View */,
@@ -124,7 +124,7 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		FD3389122917993F00C4AB98 /* Data */ = {
+		26FE54E62949B90100B4E0E9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				FDFD7A642928993A001BE945 /* MockData.json */,
