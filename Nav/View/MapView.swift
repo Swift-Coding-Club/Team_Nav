@@ -13,7 +13,7 @@ struct MapView: View {
     
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    @State private var isLoggedIn: Bool = false
+    @State private var isLoggedIn: Bool = true
     @State private var isClickedYes: Bool = false
     @State private var isShowModal: Bool = false
     
@@ -93,7 +93,7 @@ struct MapView: View {
                             Text("로그인을 하시면 모든 서비스를 이용하실 수 있습니다. 로그인 하시겠습니까?")
                         }
                     )
-                    .fullScreenCover(isPresented: $isShowModal) {
+                    .sheet(isPresented: $isShowModal) {
                         NavigationView {
                             VStack {
                                 PinCreationView()
