@@ -109,10 +109,14 @@ struct PinCreationView: View {
         }
         
         Group {
-            Text("설명")
-                .subhead3()
-                .foregroundColor(.navBlack)
-            
+            HStack {
+                Text("설명")
+                    .subhead3()
+                    .foregroundColor(.navBlack)
+
+                Spacer()
+            }
+
             TextEditor(text: $locationDescription)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
