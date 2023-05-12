@@ -118,6 +118,7 @@ struct PinCreationView: View {
             }
 
             TextEditor(text: $locationDescription)
+                .frame(minHeight: 100)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.navBlack, lineWidth: 1)
