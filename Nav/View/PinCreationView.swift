@@ -126,13 +126,15 @@ struct PinCreationView: View {
         }
         
         Group {
-            Text("평점")
-                .subhead3()
-                .foregroundColor(.navBlack)
-                .padding(.top, 20)
-            
-            // TODO: - 하단의 Spacer를 별점으로 변경
-            
+            HStack {
+                Text("평점")
+                    .subhead3()
+                    .foregroundColor(.navBlack)
+                    .padding(.top, 20)
+
+                Spacer()
+            }
+
             HStack {
                 ForEach(rating, id: \.self) {
                     Image(systemName: "star.fill")
