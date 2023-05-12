@@ -4,32 +4,28 @@
 //
 //  Created by 김민택 on 2022/10/29.
 //
-
 import SwiftUI
 import PhotosUI
-
 struct PinCreationView: View {
     @State private var locationCategory: String = "음식"
     @State private var locationName: String = ""
     @State private var locationAddress: String = ""
     @State private var locationDescription: String = ""
-    @State private var rating: [Bool] = [true, true, true, false, false]
-    @State var btnCategory:Bool = false
-    
+    @State private var rating: [Bool] = [false, false, false, false, false]
+
     @StateObject var imagePicker = ImagePicker()
-    
-    let rouws = [GridItem()]
-    let maxPhotosCount:Int = 5
-    
+    let columns = [GridItem(.adaptive(minimum: 100))]
+
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("테마")
                     .subhead3()
                     .foregroundColor(.navBlack)
-                
+
                 Spacer()
-                
+
                 Button(action: {}) {
                     Text(locationCategory)
                         .body2()
@@ -38,32 +34,32 @@ struct PinCreationView: View {
                         .background(RoundedRectangle(cornerRadius: 16).fill(Color.navGray))
                 }
             }
-            
+
             HStack {
                 Text("이름")
                     .subhead3()
                     .foregroundColor(.navBlack)
-                
+
                 VStack {
                     TextField("추가할 장소의 이름을 입력해주세요.", text: $locationName)
-                    
+
                     Divider()
                 }
                 .padding(.leading, 16)
             }
-            
+
             HStack {
                 Text("주소")
                     .subhead3()
                     .foregroundColor(.navBlack)
-                
+
                 VStack {
                     TextField("클릭해서 주소를 변경해주세요.", text: $locationAddress)
                     Divider()
                 }
                 .padding(.leading, 16)
             }
-            
+
             Group {
                 Text("사진")
                     .subhead3()
@@ -77,7 +73,7 @@ struct PinCreationView: View {
                                         .resizable()
                                         .scaledToFit()
                                 }
-                                
+
                                 Button(action: {
                                     print(imagePicker.images.count)
                                 }) {
@@ -107,7 +103,7 @@ struct PinCreationView: View {
                 }
             }
         }
-        
+
         Group {
             HStack {
                 Text("설명")
@@ -124,7 +120,7 @@ struct PinCreationView: View {
                         .stroke(Color.navBlack, lineWidth: 1)
                 )
         }
-        
+
         Group {
             HStack {
                 Text("평점")
@@ -145,7 +141,7 @@ struct PinCreationView: View {
             }
             .padding(.bottom, 20)
         }
-        
+
         Button(action: {}) {
             Text("확인")
                 .headline()
@@ -158,7 +154,6 @@ struct PinCreationView: View {
         }
     }
 }
-
 struct PinCreationView_Previews: PreviewProvider {
     static var previews: some View {
         PinCreationView()
