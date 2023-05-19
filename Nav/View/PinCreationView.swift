@@ -16,7 +16,6 @@ struct PinCreationView: View {
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
 
-
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -94,64 +93,63 @@ struct PinCreationView: View {
                                 )
                             }
                         }
-                        .onAppear {
-                                    UIScrollView.appearance().bounces = false
-                                }
-                                .onDisappear {
-                                    UIScrollView.appearance().bounces = true
-                                }
                 }
             }
-        }
+            Group {
+                HStack {
+                    Text("설명")
+                        .subhead3()
+                        .foregroundColor(.navBlack)
 
-        Group {
-            HStack {
-                Text("설명")
-                    .subhead3()
-                    .foregroundColor(.navBlack)
-
-                Spacer()
-            }
-
-            TextEditor(text: $locationDescription)
-                .frame(minHeight: 100)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.navBlack, lineWidth: 1)
-                )
-        }
-
-        Group {
-            HStack {
-                Text("평점")
-                    .subhead3()
-                    .foregroundColor(.navBlack)
-                    .padding(.top, 20)
-
-                Spacer()
-            }
-
-            HStack {
-                ForEach(rating, id: \.self) {
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .frame(width: 65, height: 65)
-                        .foregroundColor($0 ? .yellow : .navGray)
+                    Spacer()
                 }
-            }
-            .padding(.bottom, 20)
-        }
 
-        Button(action: {}) {
-            Text("확인")
-                .headline()
-                .foregroundColor(.navWhite)
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.primaryRed)
-                )
+                TextEditor(text: $locationDescription)
+                    .frame(minHeight: 100)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.navBlack, lineWidth: 1)
+                    )
+            }
+
+            Group {
+                HStack {
+                    Text("평점")
+                        .subhead3()
+                        .foregroundColor(.navBlack)
+                        .padding(.top, 20)
+
+                    Spacer()
+                }
+
+                HStack {
+                    ForEach(rating, id: \.self) {
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .frame(width: 65, height: 65)
+                            .foregroundColor($0 ? .yellow : .navGray)
+                    }
+                }
+                .padding(.bottom, 20)
+            }
+
+            Button(action: {}) {
+                Text("확인")
+                    .headline()
+                    .foregroundColor(.navWhite)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.primaryRed)
+                    )
+            }
         }
+        .onAppear {
+                    UIScrollView.appearance().bounces = false
+                }
+                .onDisappear {
+                    UIScrollView.appearance().bounces = true
+                }
     }
 }
 struct PinCreationView_Previews: PreviewProvider {
