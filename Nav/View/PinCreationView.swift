@@ -78,10 +78,22 @@ struct PinCreationView: View {
                     ScrollView(.horizontal, showsIndicators: false){
                         LazyHGrid(rows: rouws) {
                             ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                                imagePicker.images[index]
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
+                                Button {
+                                    imagePicker.images.remove(at: index)
+                                } label: {
+                                    ZStack {
+                                        imagePicker.images[index]
+                                            .resizable()
+                                            .frame(width: 100, height: 100)
+                                            .scaledToFill()
+                                        Image(systemName: "minus.circle.fill")
+                                            .resizable()
+                                            .frame(width: 15, height: 15)
+                                            .tint(.red)
+                                            .padding(EdgeInsets(top: 3, leading: 70, bottom: 40, trailing: 0))
+                                        Spacer()
+                                    }
+                                }
                             }
                             Button(action: {
                                 print(imagePicker.images.count)
@@ -136,6 +148,12 @@ struct PinCreationView: View {
                     
                     HStack {
                         ForEach(rating, id: \.self) {
+//                            index in Button {
+//                                Image(systemName: "star.fill")
+//                                    .resizable()
+//                                    .frame(width: 65, height: 65)
+////                                    .foregroundColor($0 ? .yellow : .navGray)
+//                            }
                             Image(systemName: "star.fill")
                                 .resizable()
                                 .frame(width: 65, height: 65)
