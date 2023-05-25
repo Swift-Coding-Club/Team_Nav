@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11756B8F2A1FC5D000FC8C43 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11756B8E2A1FC5D000FC8C43 /* SettingView.swift */; };
 		262C17BE290CDF6900450E54 /* PinCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17BD290CDF6900450E54 /* PinCreationView.swift */; };
 		262C17C0290D06F700450E54 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17BF290D06F700450E54 /* Color+.swift */; };
 		262C17C2290D090C00450E54 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17C1290D090C00450E54 /* Font+.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11756B8E2A1FC5D000FC8C43 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		262C17BD290CDF6900450E54 /* PinCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCreationView.swift; sourceTree = "<group>"; };
 		262C17BF290D06F700450E54 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		262C17C1290D090C00450E54 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				262C17BD290CDF6900450E54 /* PinCreationView.swift */,
 				FD3389192917B81E00C4AB98 /* ListView.swift */,
 				DCE7EBD02A172C9000644745 /* SearchBar.swift */,
+				11756B8E2A1FC5D000FC8C43 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,14 +147,6 @@
 				FDFD7A6029289926001BE945 /* Bundle+Ext.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		26FE54E62949B90100B4E0E9 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				FDFD7A642928993A001BE945 /* MockData.json */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +224,7 @@
 				262C17C2290D090C00450E54 /* Font+.swift in Sources */,
 				262C17C6290E385E00450E54 /* Text+.swift in Sources */,
 				262C17C0290D06F700450E54 /* Color+.swift in Sources */,
+				11756B8F2A1FC5D000FC8C43 /* SettingView.swift in Sources */,
 				FDFD7A6129289926001BE945 /* Bundle+Ext.swift in Sources */,
 				262C17CE290E9D4500450E54 /* Image+.swift in Sources */,
 				26A1501929083B7B00BC7355 /* MapView.swift in Sources */,

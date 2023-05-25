@@ -20,9 +20,9 @@ struct ContentView: View {
                     Image(systemName: "list.bullet")
                 }
             
-            PinCreationView()
+            SettingView()
                 .tabItem {
-                    Image(systemName: "plus")
+                    Image(systemName: "gearshape")
                 }
         }
     }
