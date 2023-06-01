@@ -112,6 +112,8 @@ struct MapView: View {
                                 }
                             }
                         }
+                    List {
+                        Text(searchQueryString)
                     }
                 }
             }
