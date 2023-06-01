@@ -10,6 +10,7 @@ struct MapView: View {
     private var mockDatas: [MockDatum] = MockDatum.allData
     
     @State var searchQueryString = ""
+    @State var isEdit = false
 
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -112,6 +113,7 @@ struct MapView: View {
                                 }
                             }
                         }
+                if isEdit {
                     List {
                         Text(searchQueryString)
                     }
@@ -123,6 +125,13 @@ struct MapView: View {
                 placement: .navigationBarDrawer,
                 prompt: "검색"
             )
+            .onChange(of: searchQueryString) { newValue in
+                if newValue != "" {
+                    isEdit = true
+                } else {
+                    isEdit = false
+                }
+            }
         }
     }
     
@@ -131,4 +140,4 @@ struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
     }
-}
+}}
