@@ -10,7 +10,7 @@ struct MapView: View {
     private var mockDatas: [MockDatum] = MockDatum.allData
     
     @State var searchQueryString = ""
-    @State var isEdit = false
+    @State var isEditing = false
 
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -27,7 +27,7 @@ struct MapView: View {
                     data in MapMarker(coordinate: data.coordinate)
                 }
 
-                if isEdit {
+                if isEditing {
                     List {
                         Text(searchQueryString)
                     }
@@ -40,7 +40,7 @@ struct MapView: View {
                 prompt: "검색"
             )
             .onChange(of: searchQueryString) { newValue in
-                isEdit = (newValue != "" ? true : false)
+                isEditing = (newValue != "" ? true : false)
             }
         }
     }
