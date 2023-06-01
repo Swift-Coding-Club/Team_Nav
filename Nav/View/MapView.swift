@@ -40,11 +40,7 @@ struct MapView: View {
                 prompt: "검색"
             )
             .onChange(of: searchQueryString) { newValue in
-                if newValue != "" {
-                    isEdit = true
-                } else {
-                    isEdit = false
-                }
+                isEdit = (newValue != "" ? true : false)
             }
         }
     }
