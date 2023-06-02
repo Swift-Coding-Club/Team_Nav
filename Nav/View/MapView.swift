@@ -28,8 +28,8 @@ struct MapView: View {
                     List(addressSearcher.completions) { completion in
                         Button {
                             // 핀 포커싱 기능 추가
-                            addressSearcher.loadAddressCoordinate(completion) { latitude, longitude in
-                                print(latitude, longitude)
+                            addressSearcher.loadAddressCoordinate(completion) { coordinate in
+                                region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                             }
                             addressSearcher.searchQuery = ""
                         } label: {

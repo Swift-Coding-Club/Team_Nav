@@ -27,14 +27,14 @@ class AddressSearcher: NSObject, ObservableObject, MKLocalSearchCompleterDelegat
         self.completions = completer.results
     }
 
-    func loadAddressCoordinate(_ address: MKLocalSearchCompletion, completoinHandler: @escaping (Double, Double) -> Void) {
+    func loadAddressCoordinate(_ address: MKLocalSearchCompletion, completoinHandler: @escaping (CLLocationCoordinate2D) -> Void) {
         let searchRequest = MKLocalSearch.Request(completion: address)
         let search = MKLocalSearch(request: searchRequest)
         search.start { response, error in
             guard error == nil else { return }
             guard let placeMark = response?.mapItems[0].placemark else { return }
 
-            completoinHandler(placeMark.coordinate.latitude, placeMark.coordinate.longitude)
+            completoinHandler(placeMark.coordinate)
         }
     }
 }
