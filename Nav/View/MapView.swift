@@ -8,7 +8,6 @@ import MapKit
 import SwiftUI
 struct MapView: View {
     @ObservedObject var addressSearcher = AddressSearcher()
-    @State var isEditing = false
 
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -24,7 +23,7 @@ struct MapView: View {
                     data in MapMarker(coordinate: data.coordinate)
                 }
 
-                if isEditing {
+                if addressSearcher.searchQuery != "" {
                     List(addressSearcher.completions) { completion in
                         Button {
                             addressSearcher.loadAddressCoordinate(completion) { coordinate in
@@ -50,9 +49,6 @@ struct MapView: View {
                 placement: .navigationBarDrawer,
                 prompt: "검색"
             )
-            .onChange(of: addressSearcher.searchQuery) { newValue in
-                isEditing = (newValue != "" ? true : false)
-            }
         }
     }
 }
