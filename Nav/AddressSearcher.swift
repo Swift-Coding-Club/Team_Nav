@@ -26,6 +26,17 @@ class AddressSearcher: NSObject, ObservableObject, MKLocalSearchCompleterDelegat
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         self.completions = completer.results
     }
+
+    func loadAddressCoordinate(_ address: MKLocalSearchCompletion, completoinHandler: @escaping (Double, Double) -> Void) {
+        let searchRequest = MKLocalSearch.Request(completion: address)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { response, error in
+            guard error == nil else { return }
+            guard let placeMark = response?.mapItems[0].placemark else { return }
+
+            completoinHandler(placeMark.coordinate.latitude, placeMark.coordinate.longitude)
+        }
+    }
 }
 
 extension MKLocalSearchCompletion: Identifiable {}
