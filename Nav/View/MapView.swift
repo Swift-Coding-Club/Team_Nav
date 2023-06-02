@@ -27,7 +27,6 @@ struct MapView: View {
                 if isEditing {
                     List(addressSearcher.completions) { completion in
                         Button {
-                            // 핀 포커싱 기능 추가
                             addressSearcher.loadAddressCoordinate(completion) { coordinate in
                                 region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                             }
