@@ -28,6 +28,9 @@ struct MapView: View {
                     List(addressSearcher.completions) { completion in
                         Button {
                             // 핀 포커싱 기능 추가
+                            addressSearcher.loadAddressCoordinate(completion) { latitude, longitude in
+                                print(latitude, longitude)
+                            }
                             addressSearcher.searchQuery = ""
                         } label: {
                             VStack(alignment: .leading) {
