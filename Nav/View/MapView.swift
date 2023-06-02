@@ -12,9 +12,6 @@ struct MapView: View {
 
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    @State private var isLoggedIn: Bool = true
-    @State private var isClickedYes: Bool = false
-    @State private var isShowModal: Bool = false
 
     private var mockDatas: [MockDatum] = MockDatum.allData
 
