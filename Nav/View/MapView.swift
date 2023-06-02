@@ -7,9 +7,7 @@
 import MapKit
 import SwiftUI
 struct MapView: View {
-    private var mockDatas: [MockDatum] = MockDatum.allData
-    
-    @State var searchQueryString = ""
+    @ObservedObject var addressSearcher = AddressSearcher()
     @State var isEditing = false
 
     // 서울 좌표
@@ -17,6 +15,8 @@ struct MapView: View {
     @State private var isLoggedIn: Bool = true
     @State private var isClickedYes: Bool = false
     @State private var isShowModal: Bool = false
+
+    private var mockDatas: [MockDatum] = MockDatum.allData
 
     var body: some View {
         NavigationView {
@@ -28,23 +28,36 @@ struct MapView: View {
                 }
 
                 if isEditing {
-                    List {
-                        Text(searchQueryString)
+                    List(addressSearcher.completions) { completion in
+                        Button {
+                            // 핀 포커싱 기능 추가
+                            addressSearcher.searchQuery = ""
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(completion.title)
+                                if completion.subtitle != "" {
+                                    Text(completion.subtitle)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
                     }
                 }
             }
             .navigationTitle("NAV")
             .searchable(
-                text: $searchQueryString,
+                text: $addressSearcher.searchQuery,
                 placement: .navigationBarDrawer,
                 prompt: "검색"
             )
-            .onChange(of: searchQueryString) { newValue in
+            .onChange(of: addressSearcher.searchQuery) { newValue in
                 isEditing = (newValue != "" ? true : false)
             }
         }
     }
 }
+
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
