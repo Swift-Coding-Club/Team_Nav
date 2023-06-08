@@ -8,55 +8,41 @@
 import SwiftUI
 
 struct SettingView: View {
+    @StateObject private var alertManager = AlertManager()
     @State private var isApiModalPresented = false
     @State private var isVersionAlert = false
-    @State private var isLogoutAlert = false
     @State private var isResetAlert = false
     
     var body: some View {
         NavigationView {
             Form{
                 Section {
-                    Button(action: {
+                    SettingButton(title: "오픈 API") {
                         self.isApiModalPresented = true
-                    }) {
-                        Text("오픈 API")
                     }
-                    .font(.subheadline)
-                    .foregroundColor(.black)
                     .sheet(isPresented: $isApiModalPresented) {
                         // 오픈 API 모달 뷰 구현
                         Text("오픈 API 모달 팝업")
                     }
                     
-                    Button(action: {
+                    SettingButton(title: "버전 정보") {
                         self.isVersionAlert = true
-                    }) {
-                        Text("버전 정보")
                     }
-                    .font(.subheadline)
-                    .foregroundColor(.black)
                     .alert(isPresented: $isVersionAlert) {
-                        Alert(title: Text("버전 정보"), message: Text("현재 버전: 1.0"), dismissButton: .default(Text("확인")))
+                        alertManager.showAlert(title: "버전정보", message: "현재 버전: v1.0")
                     }
                     
-                    Button(action: {
+                    SettingButton(title: "초기화") {
                         self.isResetAlert = true
-                    }) {
-                        Text("초기화")
                     }
-                    .font(.subheadline)
-                    .foregroundColor(.black)
                     .alert(isPresented: $isResetAlert) {
-                        Alert(title: Text("초기화"), message: Text("초기화 하시겠습니까?"), primaryButton: .destructive(Text("초기화"), action: {
+                        alertManager.showResetAlert(title: "초기화", message: "초기화 하시겠습니까?") {
                             // 초기화 로직 구현
-                        }), secondaryButton: .cancel(Text("취소")))
+                        }
                     }
                 }
-                
             }
         }
-        
     }
 }
 
@@ -66,3 +52,15 @@ struct SettingView_Previews: PreviewProvider {
     }
 }
 
+struct SettingButton: View {
+    let title: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+        }
+        .font(.subheadline)
+        .foregroundColor(.black)
+    }
+}

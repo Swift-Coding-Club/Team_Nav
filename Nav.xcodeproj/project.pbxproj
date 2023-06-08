@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11756B8F2A1FC5D000FC8C43 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11756B8E2A1FC5D000FC8C43 /* SettingView.swift */; };
+		11A6F3992A31BFD600E36EBD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A6F3982A31BFD600E36EBD /* Common.swift */; };
 		262C17BE290CDF6900450E54 /* PinCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17BD290CDF6900450E54 /* PinCreationView.swift */; };
 		262C17C0290D06F700450E54 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17BF290D06F700450E54 /* Color+.swift */; };
 		262C17C2290D090C00450E54 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C17C1290D090C00450E54 /* Font+.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		11756B8E2A1FC5D000FC8C43 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		11A6F3982A31BFD600E36EBD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		262C17BD290CDF6900450E54 /* PinCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCreationView.swift; sourceTree = "<group>"; };
 		262C17BF290D06F700450E54 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		262C17C1290D090C00450E54 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11A6F3972A31BFC300E36EBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				11A6F3982A31BFD600E36EBD /* Common.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		26A14FFE29083A1300BC7355 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 			children = (
 				26A1500A29083A1300BC7355 /* NavApp.swift */,
 				26A1500C29083A1300BC7355 /* ContentView.swift */,
+				11A6F3972A31BFC300E36EBD /* Common */,
 				26FE54E62949B90100B4E0E9 /* Data */,
 				FD3389112917993300C4AB98 /* Extension */,
 				FD3389102917992800C4AB98 /* Model */,
@@ -219,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A6F3992A31BFD600E36EBD /* Common.swift in Sources */,
 				CE2D8D3829C59D5F00E5C104 /* ImagePicker.swift in Sources */,
 				26A1500D29083A1300BC7355 /* ContentView.swift in Sources */,
 				262C17C2290D090C00450E54 /* Font+.swift in Sources */,
