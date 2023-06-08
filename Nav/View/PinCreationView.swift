@@ -14,6 +14,7 @@ struct PinCreationView: View {
     @State private var rating: [Bool] = [false, false, false, false, false]
     @State private var showDeleteConfirmationAlert = false
     @State private var imageToRemoveIndex: Int?
+    @State private var selectedImageIndex: Int? = nil;
     
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -66,48 +67,61 @@ struct PinCreationView: View {
                     .subhead3()
                     .foregroundColor(.navBlack)
                     .padding(.top, 20)
-                HStack {
+                HStack(spacing: 8) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyVGrid(columns: columns) {
+                        LazyHStack(spacing: 8) {
                             ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                                imagePicker.images[index]
-                                    .resizable()
-                                    .scaledToFit()
-                                    .overlay(
-                                        Button(action: {
-                                            showDeleteConfirmationAlert = true
-                                            imageToRemoveIndex = index
-                                        }) {
-                                            Image(systemName: "minus.circle.fill")
-                                                .resizable()
-                                                .frame(width: 30, height: 30)
-                                                .foregroundColor(.red)
+                                VStack {
+                                    imagePicker.images[index]
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .clipped()
+                                        .cornerRadius(8)
+                                        .onTapGesture {
+                                            selectedImageIndex = index
                                         }
-                                    )
+                                    
+                                    Button(action: {
+                                        showDeleteConfirmationAlert = true
+                                        imageToRemoveIndex = index
+                                    }) {
+                                        Image(systemName: "minus.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.red)
+                                    }
+                                    .frame(width: 100, height:60)
                                     .onTapGesture {
                                         showDeleteConfirmationAlert = true
                                         imageToRemoveIndex = index
                                     }
-                            }
-                            
-                            Button(action: {
-                                print(imagePicker.images.count)
-                            }) {
-                                PhotosPicker(selection: $imagePicker.imageSelections,
-                                             maxSelectionCount: 10,
-                                             matching: .images,
-                                             photoLibrary: .shared()) {
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                        .foregroundColor(.blue)
+                                    
                                 }
                             }
-                            .frame(width: 100, height: 100)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.navGray)
-                            )
+                            VStack {
+                                Button(action: {
+                                    print(imagePicker.images.count)
+                                }) {
+                                    PhotosPicker(selection: $imagePicker.imageSelections,
+                                                 maxSelectionCount: 10,
+                                                 matching: .images,
+                                                 photoLibrary: .shared()) {
+                                        Image(systemName: "plus.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                .frame(width: 100, height: 100)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color.navGray)
+                                )
+                                if !imagePicker.images.isEmpty {
+                                    Spacer()
+                                }
+                            }
                         }
                     }
                 }
