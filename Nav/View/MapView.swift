@@ -7,7 +7,7 @@
 import MapKit
 import SwiftUI
 struct MapView: View {
-    @ObservedObject var addressSearcher = AddressSearcher()
+    @ObservedObject var locationManager = LocationManager()
 
     // 서울 좌표
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -23,13 +23,15 @@ struct MapView: View {
                     data in MapMarker(coordinate: data.coordinate)
                 }
 
-                if addressSearcher.searchQuery != "" {
-                    List(addressSearcher.completions) { completion in
+                if locationManager.searchQuery != "" {
+                    List(locationManager.completions) { completion in
                         Button {
-                            addressSearcher.loadAddressCoordinate(completion) { coordinate in
-                                region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                            locationManager.loadAddressCoordinate(completion) { location in
+                                withAnimation {
+                                    region = location
+                                }
                             }
-                            addressSearcher.searchQuery = ""
+                            locationManager.searchQuery = ""
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(completion.title)
@@ -45,7 +47,7 @@ struct MapView: View {
             }
             .navigationTitle("NAV")
             .searchable(
-                text: $addressSearcher.searchQuery,
+                text: $locationManager.searchQuery,
                 placement: .navigationBarDrawer,
                 prompt: "검색"
             )
