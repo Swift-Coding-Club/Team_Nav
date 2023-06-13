@@ -22,28 +22,7 @@ struct MapView: View {
                     annotationItems: mockDatas) {
                     data in MapMarker(coordinate: data.coordinate)
                 }
-
-                if locationManager.searchQuery != "" {
-                    List(locationManager.completions) { completion in
-                        Button {
-                            locationManager.loadAddressCoordinate(completion) { location in
-                                withAnimation {
-                                    region = location
-                                }
-                            }
-                            locationManager.searchQuery = ""
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(completion.title)
-                                if completion.subtitle != "" {
-                                    Text(completion.subtitle)
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                    }
-                }
+                SearchedView(locationManager: locationManager, region: $region)
             }
             .navigationTitle("NAV")
             .searchable(
@@ -51,6 +30,37 @@ struct MapView: View {
                 placement: .navigationBarDrawer,
                 prompt: "검색"
             )
+        }
+    }
+}
+
+private struct SearchedView: View {
+    let locationManager: LocationManager
+    @Binding var region: MKCoordinateRegion
+    @Environment(\.isSearching) private var isSearching
+    @Environment(\.dismissSearch) private var dismissSearch
+
+    var body: some View {
+        if isSearching {
+            List(locationManager.completions) { completion in
+                Button {
+                    locationManager.loadAddressCoordinate(completion) { location in
+                        withAnimation {
+                            region = location
+                        }
+                    }
+                    dismissSearch()
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(completion.title)
+                        if completion.subtitle != "" {
+                            Text(completion.subtitle)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+            }
         }
     }
 }
