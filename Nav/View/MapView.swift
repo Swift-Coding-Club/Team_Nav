@@ -19,7 +19,7 @@ struct MapView: View {
             ZStack {
                 Map(coordinateRegion: $region,
                     showsUserLocation: false,
-                    annotationItems: mockDatas){
+                    annotationItems: mockDatas) {
                     data in MapMarker(coordinate: data.coordinate)
                 }
 
