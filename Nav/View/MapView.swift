@@ -15,7 +15,7 @@ struct MapView: View {
     private var mockDatas: [MockDatum] = MockDatum.allData
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Map(coordinateRegion: $region,
                     showsUserLocation: false,
