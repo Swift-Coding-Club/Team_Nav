@@ -22,8 +22,11 @@ struct MapView: View {
                     annotationItems: mockDatas) {
                     data in MapMarker(coordinate: data.coordinate)
                 }
-                SearchedView(region: $region)
-                    .environmentObject(locationManager)
+
+                if locationManager.searchQuery != "" {
+                    SearchedView(region: $region)
+                        .environmentObject(locationManager)
+                }
             }
             .navigationTitle("NAV")
             .searchable(
@@ -38,27 +41,24 @@ struct MapView: View {
 private struct SearchedView: View {
     @EnvironmentObject var locationManager: LocationManager
     @Binding var region: MKCoordinateRegion
-    @Environment(\.isSearching) private var isSearching
     @Environment(\.dismissSearch) private var dismissSearch
 
     var body: some View {
-        if isSearching {
-            List(locationManager.completions) { completion in
-                Button {
-                    locationManager.loadAddressCoordinate(completion) { location in
-                        withAnimation {
-                            region = location
-                        }
+        List(locationManager.completions) { completion in
+            Button {
+                locationManager.loadAddressCoordinate(completion) { location in
+                    withAnimation {
+                        region = location
                     }
-                    dismissSearch()
-                } label: {
-                    VStack(alignment: .leading) {
-                        Text(completion.title)
-                        if completion.subtitle != "" {
-                            Text(completion.subtitle)
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
+                }
+                dismissSearch()
+            } label: {
+                VStack(alignment: .leading) {
+                    Text(completion.title)
+                    if completion.subtitle != "" {
+                        Text(completion.subtitle)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                     }
                 }
             }
