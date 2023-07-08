@@ -6,12 +6,18 @@
 //
 import SwiftUI
 import PhotosUI
+import CoreData
+import MapKit
+
 struct PinCreationView: View {
+    @EnvironmentObject var locationManager: LocationManager
+    @Environment(\.managedObjectContext) var moc
     @State private var locationCategory: String = "음식"
     @State private var locationName: String = ""
     @State private var locationAddress: String = ""
     @State private var locationDescription: String = ""
     @State private var rating: [Bool] = [false, false, false, false, false]
+    var address = CLGeocoder.init()
 
     @StateObject var imagePicker = ImagePicker()
     let columns = [GridItem(.adaptive(minimum: 100))]
@@ -133,7 +139,26 @@ struct PinCreationView: View {
                 .padding(.bottom, 20)
             }
 
-            Button(action: {}) {
+            Button(action: {
+                let newTheme = Theme(context: self.moc)
+                newTheme.name = self.locationCategory
+                
+                let newPinInfo = PinInfo(context: self.moc)
+                newPinInfo.id = UUID.init()
+                newPinInfo.title = self.locationName
+                newPinInfo.content = self.locationDescription
+                newPinInfo.rating = (self.rating.filter { $0 }.count) as NSNumber
+
+//                let newAddress = Address(context: self.moc)
+//                
+//                let newPictures = Pictures(context: self.moc)
+                
+                do {
+                    try self.moc.save()
+                } catch {
+                    print("저장하는 동안 에러 발생: \(error)")
+                }
+            }) {
                 Text("확인")
                     .headline()
                     .foregroundColor(.navWhite)

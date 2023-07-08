@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var locationManager = LocationManager()
+    
     var body: some View {
         TabView {
             MapView()
+                .environmentObject(locationManager)
                 .tabItem {
                     Image(systemName: "map")
                 }
@@ -21,6 +24,7 @@ struct ContentView: View {
                 }
             
             PinCreationView()
+                .environmentObject(locationManager)
                 .tabItem {
                     Image(systemName: "plus")
                 }
@@ -30,6 +34,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        ContentView().environmentObject(LocationManager())
+//        ContentView()
     }
 }

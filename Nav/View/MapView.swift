@@ -4,10 +4,12 @@
 //
 //  Created by 김민택 on 2022/10/26.
 //
-import MapKit
 import SwiftUI
+import MapKit
+
 struct MapView: View {
     private var mockDatas: [MockDatum] = MockDatum.allData
+    @EnvironmentObject var locationManager: LocationManager
     
     @State var searchQueryString = ""
 
@@ -20,11 +22,12 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Map(coordinateRegion: $region,
-                    showsUserLocation: false,
-                    annotationItems: mockDatas){
-                    data in MapMarker(coordinate: data.coordinate)
-                }
+//                Map(coordinateRegion: $region,
+//                    showsUserLocation: false,
+//                    annotationItems: mockDatas){
+//                    data in MapMarker(coordinate: data.coordinate)
+//                }
+                TestMapView()
 
                 HStack {
                     Spacer()
