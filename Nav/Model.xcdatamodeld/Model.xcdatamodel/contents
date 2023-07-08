@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G419" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Address" representedClassName="Address" parentEntity="PinInfo" syncable="YES" codeGenerationType="class">
+    <entity name="Address" representedClassName="Address" parentEntity="PinInfo" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="detailAddress" optional="YES" attributeType="String"/>
         <attribute name="district" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="streetAddress" optional="YES" attributeType="String"/>
         <relationship name="relationship" maxCount="1" deletionRule="Cascade" destinationEntity="PinInfo" inverseName="address" inverseEntity="PinInfo"/>
     </entity>
-    <entity name="Coordinate" representedClassName="Coordinate" parentEntity="PinInfo" syncable="YES" codeGenerationType="class">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PinInfo" inverseName="coordinate" inverseEntity="PinInfo"/>
-    </entity>
-    <entity name="Pictures" representedClassName="Pictures" parentEntity="PinInfo" syncable="YES" codeGenerationType="class">
+    <entity name="Pictures" representedClassName="Pictures" parentEntity="PinInfo" syncable="YES">
         <attribute name="img" optional="YES" attributeType="Binary"/>
         <relationship name="relationship" maxCount="1" deletionRule="Cascade" destinationEntity="PinInfo" inverseName="pictures" inverseEntity="PinInfo"/>
     </entity>
-    <entity name="PinInfo" representedClassName="PinInfo" parentEntity="Theme" syncable="YES" codeGenerationType="class">
+    <entity name="PinInfo" representedClassName="PinInfo" parentEntity="Theme" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -26,11 +23,10 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="relationship" inverseEntity="Address"/>
-        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="relationship" inverseEntity="Coordinate"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pictures" inverseName="relationship" inverseEntity="Pictures"/>
         <relationship name="theme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Theme" inverseName="pin" inverseEntity="Theme"/>
     </entity>
-    <entity name="Theme" representedClassName="Theme" syncable="YES" codeGenerationType="class">
+    <entity name="Theme" representedClassName="Theme" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="pin" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PinInfo" inverseName="theme" inverseEntity="PinInfo"/>
     </entity>
