@@ -13,7 +13,6 @@ struct PinCreationView: View {
     @State private var locationDescription: String = ""
     @State private var rating: [Bool] = [false, false, false, false, false]
     @State private var showDeleteConfirmationAlert = false
-    @State private var imageToRemoveIndex: Int?
     @State private var selectedImageIndex: Int? = nil;
     
     @StateObject var imagePicker = ImagePicker()
@@ -71,12 +70,11 @@ struct PinCreationView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 8) {
                             ForEach(0..<imagePicker.images.count, id: \.self) { index in
-                                VStack {
+                                ZStack {
                                     imagePicker.images[index]
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 100, height: 100)
-                                        .clipped()
                                         .cornerRadius(8)
                                         .onTapGesture {
                                             selectedImageIndex = index
@@ -84,44 +82,37 @@ struct PinCreationView: View {
                                     
                                     Button(action: {
                                         showDeleteConfirmationAlert = true
-                                        imageToRemoveIndex = index
+                                        selectedImageIndex = index
                                     }) {
                                         Image(systemName: "minus.circle.fill")
                                             .resizable()
                                             .frame(width: 30, height: 30)
                                             .foregroundColor(.red)
                                     }
-                                    .frame(width: 100, height:60)
                                     .onTapGesture {
                                         showDeleteConfirmationAlert = true
-                                        imageToRemoveIndex = index
-                                    }
-                                    
-                                }
-                            }
-                            VStack {
-                                Button(action: {
-                                    print(imagePicker.images.count)
-                                }) {
-                                    PhotosPicker(selection: $imagePicker.imageSelections,
-                                                 maxSelectionCount: 10,
-                                                 matching: .images,
-                                                 photoLibrary: .shared()) {
-                                        Image(systemName: "plus.circle.fill")
-                                            .resizable()
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(.blue)
+                                        selectedImageIndex = index
                                     }
                                 }
-                                .frame(width: 100, height: 100)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.navGray)
-                                )
-                                if !imagePicker.images.isEmpty {
-                                    Spacer()
-                                }
                             }
+                            PhotosPicker(selection: $imagePicker.imageSelections,
+                                         maxSelectionCount: 10,
+                                         matching: .images,
+                                         photoLibrary: .shared()) {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.blue)
+                            }
+                                         .frame(width: 100, height: 100)
+                                         .background(
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(Color.navGray)
+                                         )
+                            if !imagePicker.images.isEmpty {
+                                Spacer()
+                            }
+                            
                         }
                     }
                 }
@@ -131,7 +122,7 @@ struct PinCreationView: View {
                     title: Text("사진 삭제"),
                     message: Text("정말로 사진을 삭제하시겠습니까?"),
                     primaryButton: .destructive(Text("삭제")) {
-                        if let index = imageToRemoveIndex {
+                        if let index = selectedImageIndex {
                             imagePicker.images.remove(at: index)
                         }
                     },
